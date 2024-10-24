@@ -1,0 +1,13 @@
+<app-title-bar title="Statsify" fontSize="50"></app-title-bar>
+<app-card-most-list
+  title="Most listened artist"
+  [type]="'list'"
+  [list]="artists"
+></app-card-most-list>
+<br />
+
+<app-card-most-list
+  title="Most listened genres"
+  [type]="'pie-chart'"
+  [list]="genres"
+></app-card-most-list>

@@ -1,0 +1,33 @@
+.title-bar {
+  display: flex; /* Usar Flexbox */
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center;
+  margin: 10px;
+  color: black;
+  border-bottom: 2.5px solid black;
+}
+
+.component {
+  color: white;
+  border-bottom: 2.5px solid white;
+  display: inline-flex; /* Cambiado para ajustar el ancho al contenido */
+  width: fit-content;
+}
+
+button {
+  display: flex; /* Flex para alinear ícono y texto */
+  align-items: center; /* Centrar verticalmente */
+  padding: 5px 5px; /* Ajusta el tamaño del botón */
+  cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #15883e; /* Cambia este valor por el color que desees */
+  transition: background-color 0.3s ease;
+}

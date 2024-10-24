@@ -1,0 +1,12 @@
+<div
+  class="title-bar"
+  [ngClass]="{
+    component: type === 'component',
+    artist: type === 'artist'
+  }"
+>
+  <h1 [style.font-size]="fontSize">{{ title }}</h1>
+  <button *ngIf="title === 'Statsify'" [routerLink]="['/login']">
+    <span class="material-icons">logout</span>
+  </button>
+</div>

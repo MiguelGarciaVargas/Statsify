@@ -1,0 +1,26 @@
+.container {
+  background-color: #383434;
+  padding: 5px; /* Ajusta esto si es necesario */
+  border: none;
+  border-radius: 10px;
+  width: fit-content; /* Ajusta el ancho al contenido */
+  max-width: 100%; /* Asegúrate de que no exceda el ancho máximo */
+  box-sizing: border-box; /* Asegúrate de que el padding y el border estén incluidos en el ancho */
+  margin: 0 auto; /* Centra el contenedor horizontalmente, si es necesario */
+}
+
+.list {
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pie-chart {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  color: white;
+}

@@ -1,0 +1,19 @@
+<div class="container">
+  <app-title-bar
+    title="{{ title }}"
+    fontSize="25px"
+    type="component"
+  ></app-title-bar>
+
+  <div *ngIf="type === 'list'" class="list">
+    <app-list-item
+      *ngFor="let item of limitedList"
+      [text]="item.artist"
+    ></app-list-item>
+  </div>
+
+  <div *ngIf="type === 'pie-chart'" class="pie-chart">
+    <p>Click to visualize</p>
+    <app-pie-chart [data]="list"></app-pie-chart>
+  </div>
+</div>
