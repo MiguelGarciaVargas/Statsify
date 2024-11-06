@@ -17,7 +17,7 @@ export class TitleBarComponent implements OnInit {
   @Input() extraInput: string = '';
 
   ngOnInit() {
-    if (this.type === 'artist') {
+    if (this.type === 'artist' || this.type === 'genre') {
       this.extraInput = this.formatExtraInput(this.extraInput);
       this.title = `Statsify | ${this.extraInput}`;
     }

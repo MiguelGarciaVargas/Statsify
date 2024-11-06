@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { TitleBarComponent } from '../../components/title-bar/title-bar/title-bar.component';
 import { CardMostListComponent } from '../../components/card-most-list/card-most-list/card-most-list.component';
+import { Genre } from '../../interfaces/genre';
+import { Artist } from '../../interfaces/artist';
+import { Song } from '../../interfaces/song';
 
 @Component({
   selector: 'app-page-home',
@@ -10,7 +13,7 @@ import { CardMostListComponent } from '../../components/card-most-list/card-most
   styleUrl: './page-home.component.css',
 })
 export class PageHomeComponent {
-  songs = [
+  songs: Song[] = [
     { title: 'Hospice', artist: 'Cozy St. Jean', duration: '3:50' },
     { title: 'Foul Void', artist: 'Heriot', duration: '4:07' },
     { title: 'Opaline', artist: 'Heriot', duration: '3:21' },
@@ -36,7 +39,7 @@ export class PageHomeComponent {
     { title: 'Siege Lord', artist: 'Heriot', duration: '3:25' },
   ];
 
-  artists = [
+  artists: Artist[] = [
     { artist: '156/Silence', quantity: 48 },
     { artist: 'Junior H', quantity: 91 },
     { artist: 'Heriot', quantity: 42 },
@@ -49,7 +52,7 @@ export class PageHomeComponent {
     { artist: 'Japanese Breakfast', quantity: 57 },
   ];
 
-  genres = [
+  genres: Genre[] = [
     { genre: 'Melodic Metalcore', percentage: '28.57%' },
     { genre: 'Metalcore', percentage: '20.41%' },
     { genre: 'Deathcore', percentage: '16.33%' },
@@ -71,5 +74,14 @@ export class PageHomeComponent {
     { metric: 'Energy', value: '2.08' },
     { metric: 'Acousticness', value: '96.90' },
     { metric: 'Instrumentalness', value: '0.05' },
+  ];
+
+  weeklyMinutes = [
+    { week: 'Week 1', value: 1200 },
+    { week: 'Week 2', value: 1350 },
+    { week: 'Week 3', value: 1100 },
+    { week: 'Week 4', value: 1450 },
+    { week: 'Week 5', value: 1250 },
+    { week: 'Week 6', value: 1400 },
   ];
 }

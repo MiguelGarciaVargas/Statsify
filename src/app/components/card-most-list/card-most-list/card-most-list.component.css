@@ -1,26 +1,28 @@
 .container {
   background-color: #383434;
-  padding: 5px; /* Ajusta esto si es necesario */
+  color: white;
+  padding: 10px; /* Ajusta esto si es necesario */
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
+  height: fit-content;
   width: fit-content; /* Ajusta el ancho al contenido */
-  max-width: 100%; /* Asegúrate de que no exceda el ancho máximo */
-  box-sizing: border-box; /* Asegúrate de que el padding y el border estén incluidos en el ancho */
-  margin: 0 auto; /* Centra el contenedor horizontalmente, si es necesario */
-}
-
-.list {
-  padding-left: 5px;
-  display: flex;
-  flex-direction: column;
+  max-width: 100%;
   align-items: flex-start;
+  box-sizing: border-box;
+  margin: 10px auto; /* Centra el contenedor horizontalmente, si es necesario */
 }
 
 .pie-chart {
-  padding-left: 10px;
+  padding: 10;
+}
+
+/* .line-chart {
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 500px;
+  width: 500px;
 
   color: white;
-}
+} */

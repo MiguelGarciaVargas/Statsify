@@ -10,4 +10,7 @@ export const routes: Routes = [
 
   { path: 'artist', component: PageArtistComponent },
   { path: 'artist/:input', component: PageArtistComponent },
+
+  { path: 'genre', component: PageArtistComponent },
+  { path: 'genre/:input', component: PageArtistComponent },
 ];

@@ -5,15 +5,27 @@
     type="component"
   ></app-title-bar>
 
-  <div *ngIf="type === 'list'" class="list">
+  <div *ngIf="type == 'artist'" class="artist">
     <app-list-item
-      *ngFor="let item of limitedList"
+      *ngFor="let item of limitedArtist"
       [text]="item.artist"
     ></app-list-item>
   </div>
 
-  <div *ngIf="type === 'pie-chart'" class="pie-chart">
+  <div *ngIf="type == 'song'" class="song">
+    <app-list-item
+      *ngFor="let item of limitedSong"
+      [text]="item.title"
+      [extraText]="item.artist"
+    ></app-list-item>
+  </div>
+
+  <div *ngIf="type == 'pie-chart'" class="pie-chart">
     <p>Click to visualize</p>
-    <app-pie-chart [data]="list"></app-pie-chart>
+    <app-pie-chart [genres]="limitedGenre"></app-pie-chart>
+  </div>
+
+  <div *ngIf="type == 'line-chart'" class="line-chart">
+    <app-line-chart [data]="list"></app-line-chart>
   </div>
 </div>

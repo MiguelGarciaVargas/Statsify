@@ -11,11 +11,17 @@ import { RouterLink } from '@angular/router';
 export class ListItemComponent implements OnInit {
   @Input()
   text: string = '';
+  @Input()
+  extraText: string = '';
 
-  input: string = 'HomeArtista';
+  input: string = 'List-Item-Text';
 
   ngOnInit() {
-    this.input = this.text;
+    if (this.extraText != '') {
+      this.input = this.extraText;
+    } else {
+      this.input = this.text;
+    }
   }
 
   getFormattedInput(): string {

@@ -1,0 +1,6 @@
+.card-container {
+  display: flex; /* Activa Flexbox */
+  flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si no caben */
+  gap: 20px; /* Espacio entre los elementos */
+  justify-content: center; /* Centra los elementos en el contenedor */
+}

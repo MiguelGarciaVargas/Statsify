@@ -1,13 +1,34 @@
 <app-title-bar title="Statsify" fontSize="50"></app-title-bar>
-<app-card-most-list
-  title="Most listened artist"
-  [type]="'list'"
-  [list]="artists"
-></app-card-most-list>
-<br />
 
-<app-card-most-list
-  title="Most listened genres"
-  [type]="'pie-chart'"
-  [list]="genres"
-></app-card-most-list>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-card-most-list
+        title="Most listened songs"
+        [type]="'song'"
+        [list]="songs"
+      ></app-card-most-list>
+
+      <app-card-most-list
+        title="Most listened artist"
+        [type]="'artist'"
+        [list]="artists"
+      ></app-card-most-list>
+    </div>
+    <div class="col">
+      <app-card-most-list
+        title="Most listened genres"
+        [type]="'pie-chart'"
+        [list]="genres"
+      ></app-card-most-list>
+
+      <app-card-most-list
+        title="Weekly Listening Activity"
+        [type]="'line-chart'"
+        [list]="weeklyMinutes"
+      ></app-card-most-list>
+    </div>
+  </div>
+</div>
+
+<div class="card-container"></div>
