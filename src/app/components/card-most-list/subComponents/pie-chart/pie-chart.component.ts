@@ -8,7 +8,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Chart, ChartType, registerables, ChartEvent } from 'chart.js';
-import { Router } from '@angular/router'; // Importa el Router de Angular
+import { Router } from '@angular/router';
+import { Porcentage } from '../../../../interfaces/porcentage';
 
 @Component({
   selector: 'app-pie-chart',
@@ -19,65 +20,72 @@ import { Router } from '@angular/router'; // Importa el Router de Angular
 export class PieChartComponent implements AfterViewInit, OnChanges {
   @ViewChild('chartCanvas') private chartCanvas!: ElementRef;
 
-  @Input() genres: { genre: string; percentage: string }[] = [];
+  @Input() data: Porcentage[] = []; // Datos genéricos
+  @Input() itemType: string = ''; //Indica tipo de redireccion
 
   public chartType: ChartType = 'doughnut';
   private chart: Chart | undefined;
 
-  public genreLabels: string[] = [];
-  public genreData: number[] = [];
+  public chartLabels: string[] = [];
+  public chartData: number[] = [];
 
   constructor(private router: Router) {
-    // Inyecta el Router en el constructor
-    Chart.register(...registerables);
+    Chart.register(...registerables); // Registrar los elementos necesarios de Chart.js
   }
 
   ngAfterViewInit() {
-    this.processGenresData();
+    this.processData();
     this.createChart();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['genres'] && !changes['genres'].firstChange) {
-      this.processGenresData();
+    if (changes['data'] && !changes['data'].firstChange) {
+      this.processData();
       this.updateChart();
     }
   }
 
-  processGenresData() {
-    this.genreLabels = this.genres.map((g) => g.genre);
-    this.genreData = this.genres.map((g) => parseFloat(g.percentage));
-    // Suma los porcentajes de los géneros en el top 5
-    const totalPercentage = this.genreData.reduce(
+  // Procesa los datos para obtener las etiquetas y los porcentajes
+  processData() {
+    this.chartLabels = this.data.map((item) => item.item.name); // Extrae las etiquetas (nombres de los artistas)
+    // Extrae los porcentajes y los convierte a números (float)
+    this.chartData = this.data.map((item) => parseFloat(item.percentage));
+
+    // Sumar los porcentajes
+    const totalPercentage = this.chartData.reduce(
       (sum, value) => sum + value,
       0
     );
-    // Calcula el porcentaje para "Others"
+
+    // Si la suma de porcentajes es menor a 100, agregar la categoría "Others"
     const othersPercentage = 100 - totalPercentage;
-    // Si el porcentaje de "Others" es mayor a 0, agrégalo como una nueva entrada
     if (othersPercentage > 0) {
-      this.genreLabels.push('Others');
-      this.genreData.push(othersPercentage);
+      this.chartLabels.push('Others');
+      this.chartData.push(othersPercentage);
     }
   }
 
+  // Crea el gráfico con los datos procesados
   createChart() {
     if (this.chartCanvas) {
       this.chart = new Chart(this.chartCanvas.nativeElement, {
         type: this.chartType,
         data: {
-          labels: this.genreLabels,
+          labels: this.chartLabels,
           datasets: [
             {
-              label: 'Top 5 Géneros',
-              data: this.genreData,
+              label: 'Porcentage',
+              data: this.chartData,
               backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56',
-                '#4BC0C0',
-                '#9966FF',
-                '#E7E9ED', // Color adicional para "Others"
+                '#FF6384', // Rojo
+                '#36A2EB', // Azul
+                '#F39C12', // Amarillo dorado
+                '#4BC0C0', // Verde agua
+                '#9966FF', // Violeta
+                '#7D8A92', // Gris azulado
+                '#FF5733', // Naranja
+                '#33FF57', // Verde brillante
+                '#8E44AD', // Púrpura
               ],
             },
           ],
@@ -89,15 +97,15 @@ export class PieChartComponent implements AfterViewInit, OnChanges {
           layout: {
             padding: 0,
           },
-          onClick: (event, elements) => this.onChartClick(event, elements), // Agrega el listener de clic
+          onClick: (event, elements) => this.onChartClick(event, elements),
           plugins: {
             legend: {
-              position: 'right', // Coloca la leyenda a la derecha de la gráfica
+              position: 'right',
               labels: {
-                boxWidth: 20, // Tamaño del cuadro de color en la leyenda
-                padding: 15, // Espaciado entre el cuadro de color y el texto
-                usePointStyle: true, // Usa un estilo de punto circular (opcional)
-                color: '#FFFFFF', // Cambia el color del texto de la leyenda a blanco
+                boxWidth: 20,
+                padding: 15,
+                usePointStyle: true,
+                color: '#FFFFFF',
               },
             },
           },
@@ -108,26 +116,26 @@ export class PieChartComponent implements AfterViewInit, OnChanges {
     }
   }
 
+  // Manejador de clic en el gráfico
   onChartClick(event: ChartEvent, elements: any[]) {
     if (elements && elements.length) {
-      const index = elements[0].index; // Obtén el índice del segmento seleccionado
-      const selectedGenre = this.genreLabels[index]; // Obtiene el género correspondiente
+      const index = elements[0].index;
+      const selectedItem = this.data[index]; // Obtiene el item completo que fue clickeado
+      const artistId = selectedItem.item.id; // Aquí tomamos el artistId del item
 
-      // Redirige a una página específica con el género como parámetro o a una URL fija
-      this.router.navigate(['/genre', this.getFormattedInput(selectedGenre)]); // Navega a genre/:input con el género seleccionado
+      // Lógica para decidir la ruta a la que navegar
+      if (this.itemType === 'artist') {
+        this.router.navigate(['/artist', artistId]); // Redirige a la página del artista con el nombre formateado
+      }
     }
   }
 
+  // Actualiza el gráfico cuando cambian los datos
   updateChart() {
     if (this.chart) {
-      this.chart.data.labels = this.genreLabels;
-      this.chart.data.datasets[0].data = this.genreData;
+      this.chart.data.labels = this.chartLabels;
+      this.chart.data.datasets[0].data = this.chartData;
       this.chart.update();
     }
-  }
-
-  getFormattedInput(input: string): string {
-    input = input.replace(/\//g, '-');
-    return input.replace(/ /g, '_');
   }
 }

@@ -4,31 +4,36 @@
   <div class="row">
     <div class="col">
       <app-card-most-list
-        title="Most listened songs"
-        [type]="'song'"
-        [list]="songs"
+        [title]="'User: ' + userData.display_name"
+        [type]="'user'"
+        [list]="[userPic]"
       ></app-card-most-list>
 
       <app-card-most-list
-        title="Most listened artist"
+        title="Most listened songs"
+        [type]="'song'"
+        [list]="filteredTracks"
+      ></app-card-most-list>
+
+      <app-card-most-list
+        title="Most listened artists"
         [type]="'artist'"
-        [list]="artists"
+        [list]="topArtistFiltered"
       ></app-card-most-list>
     </div>
     <div class="col">
       <app-card-most-list
         title="Most listened genres"
-        [type]="'pie-chart'"
-        [list]="genres"
+        [type]="'pie-chart-genre'"
+        [percentages]="percentageGenres"
       ></app-card-most-list>
 
       <app-card-most-list
-        title="Weekly Listening Activity"
+        *ngIf="weeklyTimes.length > 0"
+        title="Listening Activity"
         [type]="'line-chart'"
-        [list]="weeklyMinutes"
+        [linearData]="weeklyTimes"
       ></app-card-most-list>
     </div>
   </div>
 </div>
-
-<div class="card-container"></div>

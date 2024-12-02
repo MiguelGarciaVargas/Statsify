@@ -1,1 +1,11 @@
-<button [routerLink]="['/artist', getFormattedInput()]">{{ text }}</button>
+<button
+  [ngClass]="{
+    notClickable: !isClickable,
+    selected: isSelected,
+    clickable: isClickable
+  }"
+  [routerLink]="isClickable ? ['/artist', item.id] : null"
+  [attr.disabled]="!isClickable ? true : null"
+>
+  {{ item.name }}
+</button>

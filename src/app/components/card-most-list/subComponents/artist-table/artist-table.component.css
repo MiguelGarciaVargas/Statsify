@@ -1,0 +1,44 @@
+.artist-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: transparent; /* Fondo sutil para todo el contenedor */
+  border-radius: 12px;
+  align-items: center; /* Centrado vertical */
+}
+
+.artist-card {
+  border: 1px solid #ddd; /* Borde sutil alrededor de la tarjeta */
+  border-radius: 12px; /* Bordes redondeados */
+  padding: 30px; /* Más espacio alrededor del contenido */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #fff; /* Fondo blanco para la tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animaciones para interactividad */
+}
+
+.artist-card:hover {
+  transform: translateY(-10px); /* Efecto de desplazamiento hacia arriba */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el ratón */
+}
+
+.artist-name {
+  font-size: 26px;
+  font-weight: 600;
+  color: #333; /* Color más oscuro para el nombre */
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #555; /* Color más suave para el texto */
+}
+
+strong {
+  font-weight: bold;
+  color: #333; /* Asegura que los títulos sean oscuros para resaltar */
+}
+
+.artist-card p:last-child {
+  margin-bottom: 0; /* Evitar margen extra en el último párrafo */
+}

@@ -1,5 +1,13 @@
-<app-title-bar
-  [title]="genre"
-  [type]="'artist'"
-  [extraInput]="genre"
-></app-title-bar>
+<app-title-bar [title]="titleString" [type]="'genre'"></app-title-bar>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-card-most-list
+        title="Most listened genres"
+        [type]="'line-chart'"
+        [list]="weeklyMinutes"
+      ></app-card-most-list>
+    </div>
+  </div>
+</div>

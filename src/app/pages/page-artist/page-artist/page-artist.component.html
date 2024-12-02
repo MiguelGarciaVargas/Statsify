@@ -1,5 +1,43 @@
 <app-title-bar
-  [title]="artist"
+  [title]="artistData.name"
   [type]="'artist'"
-  [extraInput]="artist"
+  [extraInput]="'sdf'"
 ></app-title-bar>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-card-most-list
+        title="Artist data"
+        [type]="'table'"
+        [artist]="artistData"
+      ></app-card-most-list>
+
+      <app-card-most-list
+        title="Artist albums"
+        [type]="'album-swiper'"
+        [list]="[artistItem]"
+      ></app-card-most-list>
+    </div>
+
+    <div class="col">
+      <app-card-most-list
+        title="Artist's most listened songs"
+        [type]="'song'"
+        [list]="topTracks"
+      ></app-card-most-list>
+
+      <app-card-most-list
+        title="Artists in Liked Songs"
+        [type]="'pie-chart-artist'"
+        [percentages]="topArtistsPercentage"
+      ></app-card-most-list>
+
+      <app-card-most-list
+        title="Other Artists"
+        [type]="'artist'"
+        [list]="topArtists"
+      ></app-card-most-list>
+    </div>
+  </div>
+</div>

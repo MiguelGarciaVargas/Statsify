@@ -2,10 +2,18 @@
   class="title-bar"
   [ngClass]="{
     component: type === 'component',
-    artist: type === 'artist'
+    artist: type === 'artist',
+    genre: type === 'genre'
   }"
 >
-  <h1 [style.font-size]="fontSize">{{ title }}</h1>
+  <h1
+    [style.font-size]="fontSize"
+    [routerLink]="type === 'artist' ? ['/home'] : null"
+    class="clickable"
+  >
+    {{ title }}
+  </h1>
+
   <button *ngIf="title === 'Statsify'" [routerLink]="['/login']">
     <span class="material-icons">logout</span>
   </button>

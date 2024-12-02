@@ -17,9 +17,11 @@ export class TitleBarComponent implements OnInit {
   @Input() extraInput: string = '';
 
   ngOnInit() {
-    if (this.type === 'artist' || this.type === 'genre') {
+    if (this.type === 'artist') {
       this.extraInput = this.formatExtraInput(this.extraInput);
       this.title = `Statsify | ${this.extraInput}`;
+    } else if (this.type === 'genre') {
+      this.title = `Statsify | ${this.title}`;
     }
   }
 

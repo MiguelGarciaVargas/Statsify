@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageArtistComponent } from './pages/page-artist/page-artist/page-artist.component';
+import { PageGenreComponent } from './pages/page-genre/page-genre.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,6 +12,5 @@ export const routes: Routes = [
   { path: 'artist', component: PageArtistComponent },
   { path: 'artist/:input', component: PageArtistComponent },
 
-  { path: 'genre', component: PageArtistComponent },
-  { path: 'genre/:input', component: PageArtistComponent },
+  { path: 'genre', component: PageGenreComponent },
 ];

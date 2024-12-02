@@ -9,9 +9,9 @@
 
 .component {
   color: white;
-  border-bottom: 2.5px solid white;
-  display: inline-flex; /* Cambiado para ajustar el ancho al contenido */
-  width: fit-content;
+  border-bottom: 2.5px solid rgb(255, 255, 255);
+  display: inline-flex;
+  width: 97%;
 }
 
 button {
@@ -28,6 +28,6 @@ button {
 }
 
 button:hover {
-  background-color: #15883e; /* Cambia este valor por el color que desees */
+  background-color: #15883e;
   transition: background-color 0.3s ease;
 }

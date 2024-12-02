@@ -14,8 +14,14 @@ button {
   width: 100%;
 }
 
-button:hover {
-  background-color: #15883e; /* Cambia este valor por el color que desees */
+.selected {
+  background-color: #15883e;
+  transition: background-color 0.3s ease;
+  color: #e0e0e0;
+}
+
+button.clickable:hover {
+  background-color: #15883e;
   transition: background-color 0.3s ease;
   color: #e0e0e0;
 }

@@ -1,31 +1,67 @@
-<div class="container">
+<div class="container w-100">
   <app-title-bar
     title="{{ title }}"
     fontSize="25px"
     type="component"
   ></app-title-bar>
 
-  <div *ngIf="type == 'artist'" class="artist">
-    <app-list-item
-      *ngFor="let item of limitedArtist"
-      [text]="item.artist"
-    ></app-list-item>
-  </div>
+  <ng-container [ngSwitch]="type">
+    <!-- User Pic -->
+    <div *ngSwitchCase="'user'" class="user">
+      <img [src]="list[0].name" alt="" />
+    </div>
 
-  <div *ngIf="type == 'song'" class="song">
-    <app-list-item
-      *ngFor="let item of limitedSong"
-      [text]="item.title"
-      [extraText]="item.artist"
-    ></app-list-item>
-  </div>
+    <!-- Most Listened Artist -->
+    <ng-container *ngSwitchCase="'artist'">
+      <app-list-item *ngFor="let item of list" [item]="item"> </app-list-item>
+    </ng-container>
 
-  <div *ngIf="type == 'pie-chart'" class="pie-chart">
-    <p>Click to visualize</p>
-    <app-pie-chart [genres]="limitedGenre"></app-pie-chart>
-  </div>
+    <!-- Most Listened Artist Ranking Not Clickable
+    <ng-container *ngSwitchCase="'artist-notClickable'">
+      <app-list-item
+        *ngFor="let item of list"
+        [item]="item"
+        [extraText]="'notClickable'"
+      >
+      </app-list-item>
+    </ng-container> -->
 
-  <div *ngIf="type == 'line-chart'" class="line-chart">
-    <app-line-chart [data]="list"></app-line-chart>
-  </div>
+    <!-- Most Listened Songs -->
+    <ng-container *ngSwitchCase="'song'">
+      <app-list-item
+        *ngFor="let item of list"
+        [item]="item"
+        [extraText]="item.name"
+      ></app-list-item>
+    </ng-container>
+
+    <!-- Line Chart -->
+    <app-line-chart
+      *ngSwitchCase="'line-chart'"
+      [datasets]="linearData"
+    ></app-line-chart>
+
+    <!-- Pie Chart for Artist -->
+    <app-pie-chart
+      *ngSwitchCase="'pie-chart-artist'"
+      [data]="percentages"
+      [itemType]="'artist'"
+    ></app-pie-chart>
+
+    <!-- Pie Chart for Genre -->
+    <app-pie-chart
+      *ngSwitchCase="'pie-chart-genre'"
+      [data]="percentages"
+      [itemType]="'genre'"
+    ></app-pie-chart>
+
+    <!-- Album Swiper -->
+    <app-albumswiper *ngSwitchCase="'album-swiper'" [artistId]="list[0].id">
+    </app-albumswiper>
+
+    <app-artist-table
+      *ngSwitchCase="'table'"
+      [artist]="artist"
+    ></app-artist-table>
+  </ng-container>
 </div>
