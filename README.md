@@ -1,27 +1,32 @@
-# Statify
+# Statsify
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
+[Statsify](https://github.com/MiguelGarciaVargas/Statsify) is a dynamic dashboard powered by the Spotify API that allows users to interact with their favorite artists, explore their listening activity, and gain insights into their music preferences. The application provides visualizations of top artists, genres, and listening times, offering a personalized experience for users to track their Spotify data.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Spotify Data Integration**: Connects to the Spotify API to fetch user data, including top artists, tracks, and genres.
+- **Artist & Genre Insights**: Visualize data on your favorite artists and genres, including listening activity and trends.
+- **User Listening Time**: Tracks and stores the user's listening time data in MongoDB, offering insights into music consumption over time.
+- **Interactive Dashboard**: Display and interact with your Spotify data through a clean and responsive interface.
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**: Angular, Chart.js
+- **Backend**: Node.js, Express, MongoDB
+- **API Integration**: Spotify Web API
+- **Authentication**: OAuth 2.0
 
-## Build
+## Screenshots
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Here are some screenshots of the Statsify dashboard:
 
-## Running unit tests
+### Login Page
+![Login](https://github.com/user-attachments/assets/5438435b-261f-417a-9ebd-ea26e9320681)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Dashboard
+![Dashboard](https://github.com/user-attachments/assets/33817058-ebb9-4d2d-94e0-b6df59926622)
 
-## Running end-to-end tests
+### Artist Stats
+![Artist Stats](https://github.com/user-attachments/assets/d33ddb48-1942-4a83-aee5-a91f92e19c97)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
